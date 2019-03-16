@@ -222,7 +222,7 @@ fastglmPure <- function(x, y,
     eps <- 10*.Machine$double.eps
     if (family$family == "binomial") 
     {
-        if (any(res$fitted.values > 1 - eps) || any(res$fitted.values < eps))
+        if (any(res$fitted.values > 1 - eps, na.rm = TRUE) || any(res$fitted.values < eps, na.rm = TRUE))
             warning("fit_glm: fitted probabilities numerically 0 or 1 occurred", call. = FALSE)
     }
     if (family$family == "poisson") 
